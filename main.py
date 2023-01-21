@@ -4,18 +4,17 @@ df = pd.read_excel('data.xlsx', header=3)
 
 import plotly.express as px
 
-fig = px.scatter_mapbox(df, lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
-                        color_discrete_sequence=['#EF553B'], zoom=3, height=750, color='Total reported direct emissions')
-carbon = px.scatter_mapbox(df.dropna(subset=['CO2 emissions (non-biogenic) ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
+fig = px.scatter_mapbox(df, lat="Latitude", lon="Longitude", hover_name="City", color_discrete_sequence=['#EF553B'], zoom=3, height=750, color='Total reported direct emissions')
+carbon = px.scatter_mapbox(df.dropna(subset=['CO2 emissions (non-biogenic) ']), lat="Latitude", lon="Longitude", hover_name="City",
                         color='CO2 emissions (non-biogenic) ', zoom=3, height=750)
-nitrogen = px.scatter_mapbox(df.dropna(subset=['Nitrous Oxide (N2O) emissions ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
+nitrogen = px.scatter_mapbox(df.dropna(subset=['Nitrous Oxide (N2O) emissions ']), lat="Latitude", lon="Longitude", hover_name="City",
                         color='Nitrous Oxide (N2O) emissions ', zoom=3, height=750)
-methane = px.scatter_mapbox(df.dropna(subset=['Methane (CH4) emissions ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
+methane = px.scatter_mapbox(df.dropna(subset=['Methane (CH4) emissions ']), lat="Latitude", lon="Longitude", hover_name="City",
                         color='Methane (CH4) emissions ', zoom=3, height=750)
-hfc = px.scatter_mapbox(df.dropna(subset=['HFC emissions']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
+hfc = px.scatter_mapbox(df.dropna(subset=['HFC emissions']), lat="Latitude", lon="Longitude", hover_name="City",
                         color='HFC emissions', zoom=3, height=750)
-sf = px.scatter_mapbox(df.dropna(subset=['SF6 emissions']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
-                        color='SF6 emissions', zoom=3, height=750)
+sf = px.scatter_mapbox(df.dropna(subset=['SF6 emissions ']), lat="Latitude", lon="Longitude", hover_name="City",
+                        color='SF6 emissions ', zoom=3, height=750)
 
 
 fig.add_trace(carbon['data'][0])
