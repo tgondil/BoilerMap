@@ -13,6 +13,7 @@ fig.update_layout(
     updatemenus=[
         go.layout.Updatemenu(
             active=0,
+            type='buttons',
             buttons=list([
                 dict(label="Carbon",
                      method="update",
