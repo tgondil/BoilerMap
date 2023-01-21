@@ -4,13 +4,15 @@ df = pd.read_excel('data.xlsx', header=3)
 
 import plotly.express as px
 
-fig = px.scatter_mapbox(df.dropna(subset=['CO2 emissions (non-biogenic) ', 'Nitrous Oxide (N2O) emissions ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County"],
+fig = px.scatter_mapbox(df.dropna(subset=['CO2 emissions (non-carbiogenic) ', 'Nitrous Oxide (N2O) emissions ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County"],
                         color_discrete_sequence=['#EF553B'], zoom=3, height=750)
 
-figcar = px.scatter_mapbox(df.dropna(subset=['CO2 emissions (non-biogenic) ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County"],
+carbon = px.scatter_mapbox(df.dropna(subset=['CO2 emissions (non-biogenic) ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County"],
                         color='CO2 emissions (non-biogenic) ', zoom=3, height=750)
-fignit = px.scatter_mapbox(df.dropna(subset=['Nitrous Oxide (N2O) emissions ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County"],
+nitrogen = px.scatter_mapbox(df.dropna(subset=['Nitrous Oxide (N2O) emissions ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County"],
                         color='Nitrous Oxide (N2O) emissions ', zoom=3, height=750)
+methane = px.scatter_mapbox(df.dropna(subset=['Nitrous Oxide (N2O) emissions ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County"],
+                        color='Methane (CH4) emissions ', zoom=3, height=750)
 
 fig.add_trace(figcar['data'][0])
 fig.add_trace(fignit['data'][0])
