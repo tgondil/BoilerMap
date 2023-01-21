@@ -6,7 +6,7 @@ Death Rate Report by State
 
 Sorted by Rate
 
-State, FIPS,Met Healthy People Objective of 25.1?,"Age-Adjusted Death Rate([rate note]) - deaths per 100,000","Lower CI (Rate)","Upper CI (Rate)","CI*Rank([rank note])","Lower CI (CI*Rank)","Upper CI (CI*Rank)",Average Annual Count,Recent Trend,"Recent 5-Year Trend ([trend note]) in Death Rates","Lower 95% Confidence Interval","Upper 95% Confidence Interval"
+State,fips,Met Healthy People Objective of 25.1?,unemp,"Lower CI (Rate)","Upper CI (Rate)","CI*Rank([rank note])","Lower CI (CI*Rank)","Upper CI (CI*Rank)","Count",Recent Trend,"Recent 5-Year Trend ([trend note]) in Death Rates","Lower 95% Confidence Interval","Upper 95% Confidence Interval"
 "United States",00000,No,31.8 ,31.6, 31.9,N/A , N/A , N/A,136084,falling,-4.8 ,-5.1, -4.6
 "Kentucky",21000,No,50.1 ,48.3, 52,1 , 1 , 2,2989,falling,-5.0 ,-6.2, -3.9
 "West Virginia",54000,No,47.8 ,45.2, 50.5,2 , 1 , 5,1339,falling,-3.0 ,-3.8, -2.2
