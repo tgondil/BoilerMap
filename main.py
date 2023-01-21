@@ -4,7 +4,7 @@ df = pd.read_excel('data.xlsx', header=3)
 
 import plotly.express as px
 
-fig = px.scatter_mapbox(df, lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County"],
+fig = px.scatter_mapbox(df.dropna(subset=['CO2 emissions (non-biogenic) ', 'Nitrous Oxide (N2O) emissions ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County"],
                         color_discrete_sequence=['#EF553B'], zoom=3, height=750)
 
 figcar = px.scatter_mapbox(df.dropna(subset=['CO2 emissions (non-biogenic) ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County"],
@@ -30,7 +30,7 @@ fig.update_layout(
                            {"title": "Carbon Pollution"}]),
                 dict(label="Nitrogen",
                     method="update",
-                    args=[{"visible": [True, False]}, # show fignit, hide figcar
+                    args=[{"visible": [True, False]},
                             {"title": "Nitrogen Pollution"}]),
             ]),
         )
