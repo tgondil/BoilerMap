@@ -6,7 +6,7 @@ import pandas as pd
 df = pd.read_excel('data.xlsx', header=3)
 
 # Create a scatter map
-fig = px.scatter_geo(df, lat="Latitude", lon="Longitude", scope='usa', color = 'Total reported direct emissions')
+fig = px.scatter_geo(df, lat="Latitude", lon="Longitude", scope='usa', color = 'Total reported direct emissions', hover_name= 'Facility Name')
 
 # Add a button to switch between showing carbon and nitrogen pollution
 fig.update_layout(
