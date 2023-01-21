@@ -9,6 +9,9 @@ df = pd.read_excel('data.xlsx', header=3)
 fig = px.scatter_geo(df, lat="Latitude", lon="Longitude", scope='usa', color = 'Total reported direct emissions', hover_name= 'Facility Name')
 
 # Add a button to switch between showing carbon and nitrogen pollution
+
+print(fig.to_dict())
+
 fig.update_layout(
     updatemenus=[
         go.layout.Updatemenu(
@@ -22,6 +25,7 @@ fig.update_layout(
                 dict(label="Nitrogen",
                      method="update",
                      args=[{"visible": [False, True]},
+                           {'marker': df.loc[:,"Nitrous Oxide (N2O) emissions "]},
                            {"title": "Nitrogen Pollution"}]),
             ]),
         )
