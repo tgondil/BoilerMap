@@ -17,12 +17,15 @@ fig.update_layout(mapbox_style="light", mapbox_accesstoken='pk.eyJ1IjoiYXNod2luZ
 duration = px.density_mapbox(dfhw.dropna(subset=['Duration Change']), lat='Latitude', lon='Longitude', z='Duration Change', radius=50, center=dict(lat=39.49, lon=-98.95734), zoom =3, mapbox_style="stamen-terrain", labels={'Duration Change'})
 fig.add_trace(duration['data'][0])
 
+fig.update_coloraxes(colorbar_orientation="h", colorbar_yanchor="top", colorbar_y=0)
+
 fig.update_layout(
     updatemenus=[
         go.layout.Updatemenu(
             active=0,
             type = 'dropdown',
-            y=0.9,
+            y=1.1,
+            x=0.5,
             buttons=list([
                 dict(label="Intensity Change in Heat Waves",
                      method="update",
