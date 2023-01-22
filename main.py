@@ -1,6 +1,6 @@
 import pandas as pd
 import plotly.graph_objects as go
-df = pd.read_excel('data.xlsx', header=3)
+df = pd.read_excel('data.xlsb')
 dfhw = pd.read_csv('heatwaves.csv')
 
 import plotly.express as px
@@ -16,16 +16,11 @@ methane = px.scatter_mapbox(df.dropna(subset=['Methane (CH4) emissions ']), lat=
                         color='Methane (CH4) emissions ', zoom=3, height=700)
 hfc = px.scatter_mapbox(df.dropna(subset=['HFC emissions']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
                         color='HFC emissions', zoom=3, height=700)
-sf = px.scatter_mapbox(df.dropna(subset=['SF6 emissions']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
-                        color='SF6 emissions', zoom=3, height=700)
-hwfre = px.density_mapbox(dfhw, lat='Latitude', lon='Longitude', z='Intensity Change', radius=50, center=dict(lat=39.49, lon=41.43), zoom =3, mapbox_style="stamen-terrain",)
 
 fig.add_trace(carbon['data'][0])
 fig.add_trace(nitrogen['data'][0])
 fig.add_trace(methane['data'][0])
 fig.add_trace(hfc['data'][0])
-fig.add_trace(sf['data'][0])
-fig.add_trace(hwfre['data'][0])
 import chart_studio
 import chart_studio.plotly as py
 import chart_studio.tools as tls
@@ -63,28 +58,11 @@ fig.update_layout(
                     method="update",
                     args=[{"visible": [False, False, False, False, True]},
                             {"title": "HFC Pollution", "coloraxis.cmin": 0, "coloraxis.cmax": 100_000}]),
-                dict(label="SF6",
-                    method="update",
-                    args=[{"visible": [False, False, False, False, False, True]},
-                            {"title": "SF6 Pollution", "coloraxis.cmin": 0, "coloraxis.cmax": 100_000}]),
-                # dict(label="HeatWaves Frequency",
-                #     method="update",
-                #     args=[{"visible": [False, False, False, False, False, False, True]},
-                #             {"title": "HeatWaves Frequency"}]),
             ]),
         ),
-        go.layout.Updatemenu(
-            active=0,
-            type = 'dropdown',
-            y=0.9,
-            buttons=list([
-                dict(label="HeatWaves",
-                     method="update",
-                     args=[{"visible": [False, False, False, False, False, False, True]},
-                           {"title": "HeatWaves Frequency"}]),]))
     ]
 )
 
-py.plot(fig, filename = 'pollution', auto_open = True)
+py.plot(fig, filename = 'heat waves', auto_open = True)
 
 fig.show()
