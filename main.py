@@ -34,7 +34,8 @@ fig.update_layout(
     updatemenus=[
         go.layout.Updatemenu(
             active=0,
-            type = 'buttons',
+            type = 'dropdown',
+            y=0.5,
             buttons=list([
                 dict(label="Total Emissions",
                      method="update",
@@ -72,8 +73,8 @@ fig.update_layout(
             buttons=list([
                 dict(label="HeatWaves",
                      method="update",
-                     args=[{"visible": [False, False, False, False, False]},
-                           {"title": "Total Pollution"}]),])
+                     args=[{"visible": [False, False, False, False, False, False, True]},
+                           {"title": "HeatWaves Frequency"}]),]))
     ]
 )
 fig.show()
