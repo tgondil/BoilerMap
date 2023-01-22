@@ -60,10 +60,10 @@ fig.update_layout(
                     method="update",
                     args=[{"visible": [False, False, False, False, False, True]},
                             {"title": "SF6 Pollution"}]),
-                # dict(label="HeatWaves Frequency",
-                #     method="update",
-                #     args=[{"visible": [False, False, False, False, False, False, True]},
-                #             {"title": "HeatWaves Frequency"}]),
+                 dict(label="HeatWaves Frequency",
+                     method="update",
+                     args=[{"visible": [False, False, False, False, False, False, True]},
+                            {"title": "HeatWaves Frequency"}]),
             ]),
         ),
         go.layout.Updatemenu(
@@ -73,7 +73,7 @@ fig.update_layout(
                 dict(label="HeatWaves",
                      method="update",
                      args=[{"visible": [False, False, False, False, False]},
-                           {"title": "Total Pollution"}]),])
+                           {"title": "Total Pollution"}]),]))
     ]
 )
 fig.show()
