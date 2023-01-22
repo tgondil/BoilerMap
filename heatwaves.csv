@@ -1,4 +1,4 @@
-Station,Latitude,Longitude,Frequency Change,Duration Change,Season Change,Intensity Change
+Station,Latitude,Longitude,Frequency Change,Duration Change,Season Change,Change
 ALBANY_NY,42.75,-73.8,3.182443152,0.922206495,37.75780011,0.498142696
 ALBUQUERQUE_NM,35.05,-106.62,4.080380751,1.156347622,40.02961396,0.237160067
 ATLANTA_GA,33.65,-84.43,6.212585933,2.241648007,85.37387626,0.409455012

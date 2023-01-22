@@ -6,16 +6,16 @@ dfhw = pd.read_csv('heatwaves.csv')
 import plotly.express as px
 
 fig = px.scatter_mapbox(df, lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
-                        color_discrete_sequence=['#EF553B'], zoom=3, height=800, color='Total reported direct emissions', range_color=(0, 1_000_000))
+                        color_discrete_sequence=['#EF553B'], zoom=3, color='Emissions', range_color=(0, 1_000_000))
 
 carbon = px.scatter_mapbox(df.dropna(subset=['CO2 emissions (non-biogenic) ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
-                        color='CO2 emissions (non-biogenic) ', zoom=3, height=800, range_color=[0, 500_000])
+                        color='CO2 emissions (non-biogenic) ', zoom=3, range_color=[0, 500_000])
 nitrogen = px.scatter_mapbox(df.dropna(subset=['Nitrous Oxide (N2O) emissions ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
-                        color='Nitrous Oxide (N2O) emissions ', zoom=3, height=800)
+                        color='Nitrous Oxide (N2O) emissions ', zoom=3, )
 methane = px.scatter_mapbox(df.dropna(subset=['Methane (CH4) emissions ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
-                        color='Methane (CH4) emissions ', zoom=3, height=800)
+                        color='Methane (CH4) emissions ', zoom=3, )
 hfc = px.scatter_mapbox(df.dropna(subset=['HFC emissions']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
-                        color='HFC emissions', zoom=3, height=800)
+                        color='HFC emissions', zoom=3, )
 
 fig.add_trace(carbon['data'][0])
 fig.add_trace(nitrogen['data'][0])
@@ -28,18 +28,18 @@ import chart_studio.tools as tls
 username = 'tgondil'
 api_key = 'EU50O1jwO3ZIpIRQL7k8'
 
+fig.update_coloraxes(colorbar_yanchor="top", colorbar_xanchor="left", colorbar_x=0, colorbar_y=1)
+
 fig.update_layout(mapbox_style="light", mapbox_accesstoken='pk.eyJ1IjoiYXNod2luZGVzaCIsImEiOiJjbGQ2Nm9jZ2UwZHhyM3FzZGhmZ2U5bGNrIn0.ShkpAMGCM3RNz0SX3If1CQ', margin={"r":0,"l":0,"b":0},)
 # fig.update_traces(cluster=dict(enabled=True))
 
-fig.update_coloraxes(colorbar_orientation="h", colorbar_yanchor="top", colorbar_y=0)
-
 fig.update_layout(
-    updatemenus=[   
+    updatemenus=[
         go.layout.Updatemenu(
             active=0,
             type = 'dropdown',
-            y = 1.1,
-            x = 0.5,
+            y = 0,
+            x=0.6,
             buttons=list([
                 dict(label="Total Emissions",
                      method="update",
