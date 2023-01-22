@@ -25,12 +25,12 @@ import chart_studio
 import chart_studio.plotly as py
 import chart_studio.tools as tls
 
-username = 'tgondil'
-api_key = 'EU50O1jwO3ZIpIRQL7k8'
+username = 'mlavrenk'
+api_key = 'flp8Ee4Nhl0cInQtZ6rt'
 
 fig.update_coloraxes(colorbar_yanchor="top", colorbar_xanchor="left", colorbar_x=0, colorbar_y=1)
 
-fig.update_layout(mapbox_style="light", mapbox_accesstoken='pk.eyJ1IjoiYXNod2luZGVzaCIsImEiOiJjbGQ2Nm9jZ2UwZHhyM3FzZGhmZ2U5bGNrIn0.ShkpAMGCM3RNz0SX3If1CQ', margin={"r":0,"l":0,"b":0},)
+fig.update_layout(mapbox_style="light", mapbox_accesstoken='pk.eyJ1IjoiYXNod2luZGVzaCIsImEiOiJjbGQ2Nm9jZ2UwZHhyM3FzZGhmZ2U5bGNrIn0.ShkpAMGCM3RNz0SX3If1CQ', margin={"r":0,"l":0,"b":0,"t":0},)
 # fig.update_traces(cluster=dict(enabled=True))
 
 fig.update_layout(
@@ -38,7 +38,7 @@ fig.update_layout(
         go.layout.Updatemenu(
             active=0,
             type = 'dropdown',
-            y = 0,
+            y = 1,
             x=0.6,
             buttons=list([
                 dict(label="Total Emissions",
