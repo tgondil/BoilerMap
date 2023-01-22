@@ -6,7 +6,7 @@ dfhw = pd.read_csv('heatwaves.csv')
 import plotly.express as px
 
 fig = px.scatter_mapbox(df, lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
-                        color_discrete_sequence=['#EF553B'], zoom=3, height=700, color='Total reported direct emissions', range_color=[0, 1_000_000])
+                        color_discrete_sequence=['#EF553B'], zoom=3, height=700, color='Total reported direct emissions', range_color=(0, 1_000_000))
 
 carbon = px.scatter_mapbox(df.dropna(subset=['CO2 emissions (non-biogenic) ']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
                         color='CO2 emissions (non-biogenic) ', zoom=3, height=700, range_color=[0, 500_000])
@@ -40,27 +40,27 @@ fig.update_layout(
                 dict(label="Total Emissions",
                      method="update",
                      args=[{"visible": [True, False, False, False, False]},
-                           {"title": "Total Pollution"}]),
+                           {"title": "Total Pollution", "coloraxis.cmin": 0, "coloraxis.cmax": 1_000_000}]),
                 dict(label="Carbon",
                      method="update",
                      args=[{"visible": [False, True, False, False]},
-                           {"title": "Carbon Pollution"}]),
+                           {"title": "Carbon Pollution","coloraxis.cmin": 0, "coloraxis.cmax": 500_000}]),
                 dict(label="Nitrogen",
                     method="update",
                     args=[{"visible": [False, False, True, False]},
-                            {"title": "Nitrogen Pollution"}]),
+                            {"title": "Nitrogen Pollution", "coloraxis.cmin": 0, "coloraxis.cmax": 5_000}]),
                 dict(label="Methane",
                     method="update",
                     args=[{"visible": [False, False, False, True]},
-                            {"title": "Methane Pollution"}]),
+                            {"title": "Methane Pollution", "coloraxis.cmin": 0, "coloraxis.cmax": 100_000}]),
                 dict(label="HFC",
                     method="update",
                     args=[{"visible": [False, False, False, False, True]},
-                            {"title": "HFC Pollution"}]),
+                            {"title": "HFC Pollution", "coloraxis.cmin": 0, "coloraxis.cmax": 100_000}]),
                 dict(label="SF6",
                     method="update",
                     args=[{"visible": [False, False, False, False, False, True]},
-                            {"title": "SF6 Pollution"}]),
+                            {"title": "SF6 Pollution", "coloraxis.cmin": 0, "coloraxis.cmax": 100_000}]),
                 # dict(label="HeatWaves Frequency",
                 #     method="update",
                 #     args=[{"visible": [False, False, False, False, False, False, True]},
