@@ -1,8 +1,16 @@
 import pandas as pd
 import plotly.graph_objects as go
+import chart_studio
+import chart_studio.plotly as py
+import chart_studio.tools as tls
 dfhw = pd.read_csv('heatwaves.csv')
 
 import plotly.express as px
+
+username = 'tgondil'
+api_key = 'EU50O1jwO3ZIpIRQL7k8'
+
+chart_studio.tools.set_credentials_file(username=username, api_key= api_key)
 
 fig = px.density_mapbox(dfhw, lat='Latitude', lon='Longitude', z='Intensity Change', radius=50, center=dict(lat=39.49, lon=-98.95734), zoom =3, mapbox_style="stamen-terrain",)
 fig.update_layout(mapbox_style="light", mapbox_accesstoken='pk.eyJ1IjoiYXNod2luZGVzaCIsImEiOiJjbGQ2Nm9jZ2UwZHhyM3FzZGhmZ2U5bGNrIn0.ShkpAMGCM3RNz0SX3If1CQ', margin={"r":0,"l":0,"b":0},)
@@ -29,4 +37,7 @@ fig.update_layout(
         ),
     ]
 )
+
+py.plot(fig, filename = 'heat waves', auto_open = True)
+
 fig.show()

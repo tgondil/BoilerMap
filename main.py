@@ -26,6 +26,12 @@ fig.add_trace(methane['data'][0])
 fig.add_trace(hfc['data'][0])
 fig.add_trace(sf['data'][0])
 fig.add_trace(hwfre['data'][0])
+import chart_studio
+import chart_studio.plotly as py
+import chart_studio.tools as tls
+
+username = 'tgondil'
+api_key = 'EU50O1jwO3ZIpIRQL7k8'
 
 fig.update_layout(mapbox_style="light", mapbox_accesstoken='pk.eyJ1IjoiYXNod2luZGVzaCIsImEiOiJjbGQ2Nm9jZ2UwZHhyM3FzZGhmZ2U5bGNrIn0.ShkpAMGCM3RNz0SX3If1CQ', margin={"r":0,"l":0,"b":0},)
 # fig.update_traces(cluster=dict(enabled=True))
@@ -78,4 +84,7 @@ fig.update_layout(
                            {"title": "HeatWaves Frequency"}]),]))
     ]
 )
+
+py.plot(fig, filename = 'pollution', auto_open = True)
+
 fig.show()
