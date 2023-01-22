@@ -1,3 +1,4 @@
+
 import pandas as pd
 import plotly.graph_objects as go
 df = pd.read_excel('data.xlsx', header=3)
@@ -17,8 +18,7 @@ hfc = px.scatter_mapbox(df.dropna(subset=['HFC emissions']), lat="Latitude", lon
                         color='HFC emissions', zoom=3, height=700)
 sf = px.scatter_mapbox(df.dropna(subset=['SF6 emissions']), lat="Latitude", lon="Longitude", hover_name="City", hover_data=["State", "County", "Industry Sector"],
                         color='SF6 emissions', zoom=3, height=700)
-hwfre = px.scatter_mapbox(dfhw, lat="Latitude", lon="Longitude",hover_name="Station", hover_data=["Frequency Change", "Duration Change", "Season Change", "Intensity Change"],color='Frequency Change', zoom=3, height=750)
-
+hwfre = px.density_mapbox(dfhw, lat='Latitude', lon='Longitude', z='Intensity Change', radius=50, center=dict(lat=39.49, lon=41.43), zoom =3, mapbox_style="stamen-terrain",)
 
 fig.add_trace(carbon['data'][0])
 fig.add_trace(nitrogen['data'][0])
@@ -35,7 +35,6 @@ fig.update_layout(
         go.layout.Updatemenu(
             active=0,
             type = 'dropdown',
-            y=0.1,
             buttons=list([
                 dict(label="Total Emissions",
                      method="update",
@@ -70,7 +69,6 @@ fig.update_layout(
         go.layout.Updatemenu(
             active=0,
             type = 'dropdown',
-            y=0.9,
             buttons=list([
                 dict(label="HeatWaves",
                      method="update",
